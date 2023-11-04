@@ -3,7 +3,7 @@
 Kontaktlistan
 ======================
 */
-body {
+main {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
   grid-template-rows: repeat(3, 1fr);
@@ -11,7 +11,7 @@ body {
   grid-row-gap: 0px;
 }
 .container {
-  background-color: beige;
+  background-color: rgb(49, 103, 139);
   border: 1px solid black;
   grid-area: 2 / 2 / 3 / 3;
 }
@@ -20,16 +20,48 @@ body {
   text-align: center;
 }
 
-.frame {
-  background-color: aqua;
+.add {
+  background-color: rgb(133, 133, 133);
   border-top: 1px solid black;
+  padding-bottom: 15px;
 }
 
-.frame h3 {
-  text-align: center;
+.add h3 {
+  text-align: left;
+  padding: 5px;
 }
 
-.frame input {
+input {
   display: inline-block;
   width: 20%;
+  padding: 5px 5px;
+  margin: 5px 5px;
+  border-radius: 5px solid black;
+  outline: none;
+}
+
+button {
+  padding: 5px 5px;
+  border-radius: 5px;
+}
+
+.newBtn {
+  margin: 10px;
+  padding: 5px 5px;
+  border-radius: 5px;
+}
+
+#saved {
+  background-color: rgb(133, 133, 133);
+  border-top: 1px solid black;
+  display: block;
+}
+
+#saved h3 {
+  padding: 5px;
+}
+
+.newInput {
+  display: inline-block;
+  position: inherit;
 }
