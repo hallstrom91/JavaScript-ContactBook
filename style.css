@@ -1,0 +1,35 @@
+/*
+======================
+Kontaktlistan
+======================
+*/
+body {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+.container {
+  background-color: beige;
+  border: 1px solid black;
+  grid-area: 2 / 2 / 3 / 3;
+}
+
+.container h1 {
+  text-align: center;
+}
+
+.frame {
+  background-color: aqua;
+  border-top: 1px solid black;
+}
+
+.frame h3 {
+  text-align: center;
+}
+
+.frame input {
+  display: inline-block;
+  width: 20%;
+}
