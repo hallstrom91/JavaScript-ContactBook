@@ -10,28 +10,24 @@
     <main id="content">
       <section class="container">
         <h1>Mina Kontakter</h1>
-
         <!--container (add) for adding contacts-->
-
         <div class="add">
-          <h3>Lägg till kontakter:</h3>
-
+          <h3>Lägg till kontaktuppgifter</h3>
           <!--<label for="fullname">Namn: </label>-->
-
           <input type="text" id="fullName" placeholder="Namn" />
-
           <!--<label for="phone">Nummer: </label>-->
-
           <input type="tel" id="phone" placeholder="Telefon Nummer" />
-
-          <button type="submit" id="add-btn">Spara!</button>
-          <button type="submit" id="clr-btn">Rensa!</button>
+          <button type="submit" id="add-btn" onclick="addContactNow()">
+            Spara!
+          </button>
+          <button type="reset" id="clr-btn" onclick="clearContactFields()">
+            Rensa!
+          </button>
         </div>
-
         <!--Container (saved) for new saved contacts-->
         <div id="saved">
-          <h3>Sparade Kontakter:</h3>
-          <!--Put new saved inputfields here! PLZ :)-->
+          <h3>Sparade Kontakter</h3>
+          <!--Put new saved inputfields in divs here! PLZ :)-->
         </div>
       </section>
     </main>
