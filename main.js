@@ -8,6 +8,7 @@ const phone = document.getElementById("phone");
 const saved = document.getElementById("saved");
 let editMode = false;
 
+// FUCKING SHIT FUCK FUCK
 function changeValue(button, fullName, phone) {
   editMode = !editMode;
   button.textContent = editMode ? "Spara" : "Ändra";
@@ -15,14 +16,39 @@ function changeValue(button, fullName, phone) {
   phone.disabled = !editMode;
 }
 
-// Clear Contact-Fields Button  (unsaved)
-function clearContactFields() {
-  clrButton.addEventListener("click", function () {
-    fullName.value = "";
-    phone.value = "";
+function createEditBtn(name, phone) {
+  // Edit button for saved contacts
+  let changeButton = document.createElement("button");
+  changeButton.textContent = "Ändra";
+  changeButton.classList.add("newBtn");
+
+  // Save button for edited (saved) contacts
+  let saveButton = document.createElement("button");
+  saveButton.textContent = "Spara";
+  saveButton.classList.add("newBtn");
+  saveButton.style.display = "none";
+
+  // Listen for click on Edit/Change button
+  changeButton.addEventListener("click", function () {
+    changeValue(changeButton, name, phone);
+    saveButton.style.display = "inline-block";
+    changeButton.style.display = none;
   });
+  // Listen for click on Save button
+  saveButton.addEventListener("click", function () {
+    savedName.value = fullName.value;
+    savedPhone.value = phone.value;
+    changeValue(changeButton, name, phone);
+    saveButton.style.display = "none";
+    changeButton.style.display = "inline-block";
+  });
+  saved.appendChild(changeButton);
+  saved.appendChild(saveButton);
+
+  return changeButton, saveButton;
 }
 
+// FUNCTION TO ADD FUCKING CONTACTS
 function addContactNow() {
   // Add New Contact w buttton-click
   addButton.addEventListener("click", function () {
@@ -50,7 +76,27 @@ function addContactNow() {
     savedContacts.appendChild(savedPhone);
     saved.appendChild(savedContacts);
 
-    // Edit button for saved contacts
+    // Call edit function N buttons
+    let [changeButton, saveButton] = createEditBtn(name, phone);
+
+    /* saved.appendChild(changeButton);
+    saved.appendChild(saveButton);
+ */
+    fullName.value = "";
+    phone.value = "";
+  });
+}
+
+// Clear Contact-Fields Button (unsaved inputfields)
+function clearContactFields() {
+  clrButton.addEventListener("click", function () {
+    fullName.value = "";
+    phone.value = "";
+  });
+}
+
+// UNDER NEW STORAGE DIV IF CODE BREAKS
+/*    // Edit button for saved contacts
     const changeButton = document.createElement("button");
     changeButton.textContent = "Ändra";
     changeButton.classList.add("newBtn");
@@ -71,10 +117,4 @@ function addContactNow() {
       changeButton.style.display = "inline-block";
     });
     saved.appendChild(changeButton);
-    saved.appendChild(saveButton);
-
-    // Clear fields after input save
-    fullName.value = "";
-    phone.value = "";
-  });
-}
+    saved.appendChild(saveButton); */
