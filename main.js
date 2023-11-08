@@ -3,9 +3,11 @@
 // Setup WopWOp
 const addButton = document.getElementById("add-btn");
 const clrButton = document.getElementById("clr-btn");
+const clrAllButton = document.getElementById("clrAllBtn");
 const fullName = document.getElementById("fullName");
 const phone = document.getElementById("phone");
 const saved = document.getElementById("saved");
+
 let editMode = false;
 
 function createEditBtn(savedName, savedPhone) {
@@ -95,17 +97,28 @@ function createRemoveBtn(savedName, savedPhone, savedContacts) {
   removeButton.classList.add("newBtn");
 
   removeButton.addEventListener("click", function () {
-    savedContacts.removeChild(savedName);
+    /* savedContacts.removeChild(savedName);
     savedContacts.removeChild(savedPhone);
-    savedContacts.removeChild(removeButton);
+    savedContacts.removeChild(removeButton); */
+    savedContacts.remove(savedContacts);
   });
   return removeButton;
 }
 
-// error messages
-if (fullName === "" && phone === "" && editmode) {
+//Clear all saved inputfields
+clrAllButton.addEventListener("click", removeAllSaved);
+
+function removeAllSaved(savedContacts) {
+  for (let i = 0; i > savedContacts; i--) {
+    savedContacts[i].remove();
+  }
 }
 
+// error messages
+/* for (let i = 0; i < 0; )
+  if (fullName === "" && phone === "") {
+  }
+ */
 // UNDER NEW STORAGE DIV IF CODE BREAKS
 /*    // Edit button for saved contacts
     const changeButton = document.createElement("button");

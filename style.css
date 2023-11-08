@@ -81,3 +81,9 @@ button {
   display: inline-block;
   position: inherit;
 }
+
+#clrAllBtn {
+  display: flex;
+  margin-left: 85%;
+  margin-top: 1%;
+}
