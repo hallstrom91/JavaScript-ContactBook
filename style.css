@@ -5,6 +5,13 @@ My Contacts Page Styling Deluxe Edition 2000
 */
 
 @import url("https://fonts.googleapis.com/css2?family=Agbalumo&family=Oswald&display=swap");
+
+/*
+=======================================================
+Body, Main & Div Containers + General stuff
+=======================================================
+*/
+
 html {
   margin: 0;
   padding: 0;
@@ -43,27 +50,6 @@ main {
   font-size: 25px;
 }
 
-input {
-  display: inline-block;
-  width: 20%;
-  padding: 5px 5px;
-  margin: 5px 5px;
-  border-radius: 5px solid black;
-  outline: none;
-}
-
-button {
-  padding: 5px 5px;
-  border-radius: 5px;
-}
-
-.newBtn {
-  margin: 10px;
-  padding: 5px 5px;
-  border-radius: 5px;
-  position: inherit;
-}
-
 #saved {
   background-color: rgb(133, 133, 133);
   border-top: 1px solid black;
@@ -77,13 +63,50 @@ button {
   font-size: 25px;
 }
 
+.newInputDiv {
+  position: inherit;
+}
+
+/*
+=======================================================
+InputFields
+=======================================================
+*/
+
+input {
+  display: inline-block;
+  width: 20%;
+  padding: 5px 5px;
+  margin: 5px 5px;
+  border-radius: 5px solid black;
+  outline: none;
+}
+
 .newInput {
   display: inline-block;
   position: inherit;
 }
 
+/*
+=======================================================
+Buttons
+=======================================================
+*/
+
+button {
+  padding: 5px 5px;
+  border-radius: 5px;
+}
+
+.newBtn {
+  margin: 10px;
+  padding: 5px 5px;
+  border-radius: 5px;
+  position: inherit;
+}
+
 #clrAllBtn {
   display: flex;
-  margin-left: 85%;
+  margin-left: 88%;
   margin-top: 1%;
 }

@@ -1,6 +1,11 @@
 "strict";
 
-// Setup WopWOp
+/*
+=======================================================
+Setup WopWOp - Lets roll!
+=======================================================
+*/
+
 const addButton = document.getElementById("add-btn");
 const clrButton = document.getElementById("clr-btn");
 const clrAllButton = document.getElementById("clrAllBtn");
@@ -9,6 +14,12 @@ const phone = document.getElementById("phone");
 const saved = document.getElementById("saved");
 
 let editMode = false;
+
+/*
+=======================================================
+Creation of dynamic save and change button
+=======================================================
+*/
 
 function createEditBtn(savedName, savedPhone) {
   // Edit button for saved contacts
@@ -38,7 +49,12 @@ function createEditBtn(savedName, savedPhone) {
   return [changeButton, saveButton];
 }
 
-// Change Value in saved Inputfields Function
+/*
+=======================================================
+Change Value in saved Inputfields Function
+=======================================================
+*/
+
 function changeValue(button, fullName, phone) {
   editMode = !editMode;
   button.textContent = editMode ? "Spara" : "Ändra";
@@ -46,10 +62,14 @@ function changeValue(button, fullName, phone) {
   phone.disabled = !editMode;
 }
 
-// Listen for "click" and add contact
+/*
+=======================================================
+Add contacts to the page Function
+=======================================================
+*/
+
 addButton.addEventListener("click", addContactNow);
 
-// Add contacts function
 function addContactNow() {
   // Fetch and assign new name and number
   const name = fullName.value;
@@ -68,6 +88,7 @@ function addContactNow() {
   savedPhone.classList.add("newInput");
   // Create a new storage div for saved inputfields and info
   const savedContacts = document.createElement("div");
+  savedContacts.classList.add("newInputDiv");
   savedContacts.appendChild(savedName);
   savedContacts.appendChild(savedPhone);
   saved.appendChild(savedContacts);
@@ -82,7 +103,12 @@ function addContactNow() {
   phone.value = "";
 }
 
-// Clear Contact-Fields Button (unsaved inputfields)
+/*
+=======================================================
+Clear Contact-Fields Button (unsaved inputfields)
+=======================================================
+*/
+
 clrButton.addEventListener("click", clearContactFields);
 
 function clearContactFields() {
@@ -90,55 +116,46 @@ function clearContactFields() {
   phone.value = "";
 }
 
-// Remove saved contacts function
+/*
+=======================================================
+Remove saved contacts function
+=======================================================
+*/
+
 function createRemoveBtn(savedName, savedPhone, savedContacts) {
   const removeButton = document.createElement("button");
   removeButton.textContent = "Delete";
   removeButton.classList.add("newBtn");
 
   removeButton.addEventListener("click", function () {
-    /* savedContacts.removeChild(savedName);
-    savedContacts.removeChild(savedPhone);
-    savedContacts.removeChild(removeButton); */
     savedContacts.remove(savedContacts);
   });
   return removeButton;
 }
 
-//Clear all saved inputfields
+/*
+=======================================================
+Clear all saved inputfields
+=======================================================
+*/
+
 clrAllButton.addEventListener("click", removeAllSaved);
 
-function removeAllSaved(savedContacts) {
-  for (let i = 0; i > savedContacts; i--) {
-    savedContacts[i].remove();
+function removeAllSaved() {
+  let deleteField = document.getElementsByClassName("newInputDiv");
+  // loop to remove saved inputfields
+  while (deleteField.length > 0) {
+    let removeNow = deleteField[0];
+    removeNow.parentNode.removeChild(removeNow);
   }
 }
 
-// error messages
-/* for (let i = 0; i < 0; )
+/*
+=======================================================
+Form validation w error message 
+=======================================================
+*/
+
+for (let i = 0; i < 0; )
   if (fullName === "" && phone === "") {
   }
- */
-// UNDER NEW STORAGE DIV IF CODE BREAKS
-/*    // Edit button for saved contacts
-    const changeButton = document.createElement("button");
-    changeButton.textContent = "Ändra";
-    changeButton.classList.add("newBtn");
-    changeButton.addEventListener("click", function () {
-      changeValue(changeButton, savedName, savedPhone);
-    });
-    // Save button for edited (saved) contacts
-    const saveButton = document.createElement("button");
-    saveButton.textContent = "Spara";
-    saveButton.classList.add("newBtn");
-    saveButton.style.display = "none";
-
-    saveButton.addEventListener("click", function () {
-      savedName.value = fullName.value;
-      savedPhone = phone.value;
-      changeValue(changeButton, savedName, savedPhone);
-      saveButton.style.display = "none";
-      changeButton.style.display = "inline-block";
-    });
-    saved.appendChild(changeButton);
-    saved.appendChild(saveButton); */
