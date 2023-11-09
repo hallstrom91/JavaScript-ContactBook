@@ -14,11 +14,22 @@
         <div class="add">
           <h3>Lägg till kontaktuppgifter</h3>
           <!--<label for="fullname">Namn: </label>-->
-          <input type="text" id="fullName" placeholder="Namn" />
+          <input
+            type="text"
+            id="fullName"
+            placeholder="Namn"
+            autocomplete="given-name"
+          />
           <!--<label for="phone">Nummer: </label>-->
-          <input type="tel" id="phone" placeholder="Telefon Nummer" />
+          <input
+            type="tel"
+            id="phone"
+            placeholder="Telefon"
+            autocomplete="tel"
+          />
           <button type="submit" id="add-btn">Spara!</button>
           <button type="reset" id="clr-btn">Rensa!</button>
+          <p id="errorText"></p>
         </div>
         <!--Container (saved) for new saved contacts-->
         <div id="saved">

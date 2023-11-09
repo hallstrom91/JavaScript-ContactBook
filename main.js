@@ -51,7 +51,7 @@ function createEditBtn(savedName, savedPhone) {
 
 /*
 =======================================================
-Change Value in saved Inputfields Function
+Change value on button for saved inputfields Function
 =======================================================
 */
 
@@ -155,7 +155,3 @@ function removeAllSaved() {
 Form validation w error message 
 =======================================================
 */
-
-for (let i = 0; i < 0; )
-  if (fullName === "" && phone === "") {
-  }
