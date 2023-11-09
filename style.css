@@ -67,6 +67,10 @@ main {
   position: inherit;
 }
 
+#label {
+  display: inline-block;
+}
+
 /*
 =======================================================
 InputFields
@@ -117,7 +121,12 @@ Error Message
 =======================================================
 */
 
-#errorText {
-  text-align: center;
+#errorDisplay {
+  position: inherit;
+}
+
+.errorText {
+  text-align: left;
   color: red;
+  padding-left: 10px;
 }

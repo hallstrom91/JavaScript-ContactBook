@@ -13,23 +13,26 @@
         <!--container (add) for adding contacts-->
         <div class="add">
           <h3>Lägg till kontaktuppgifter</h3>
+
           <!--<label for="fullname">Namn: </label>-->
           <input
             type="text"
             id="fullName"
-            placeholder="Namn"
+            placeholder="Ex. Namn Efternamn"
             autocomplete="given-name"
           />
+
           <!--<label for="phone">Nummer: </label>-->
           <input
             type="tel"
             id="phone"
-            placeholder="Telefon"
+            placeholder="Ex. 072-123 45 67"
             autocomplete="tel"
           />
+
           <button type="submit" id="add-btn">Spara!</button>
           <button type="reset" id="clr-btn">Rensa!</button>
-          <p id="errorText"></p>
+          <div id="errorDisplay"></div>
         </div>
         <!--Container (saved) for new saved contacts-->
         <div id="saved">

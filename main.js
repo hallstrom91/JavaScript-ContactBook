@@ -12,6 +12,7 @@ const clrAllButton = document.getElementById("clrAllBtn");
 const fullName = document.getElementById("fullName");
 const phone = document.getElementById("phone");
 const saved = document.getElementById("saved");
+const errorDisplay = document.getElementById("errorDisplay");
 
 let editMode = false;
 
@@ -68,7 +69,7 @@ Add contacts to the page Function
 =======================================================
 */
 
-addButton.addEventListener("click", addContactNow);
+/* addButton.addEventListener("click", addContactNow); */
 
 function addContactNow() {
   // Fetch and assign new name and number
@@ -114,11 +115,12 @@ clrButton.addEventListener("click", clearContactFields);
 function clearContactFields() {
   fullName.value = "";
   phone.value = "";
+  removeError();
 }
 
 /*
 =======================================================
-Remove saved contacts function
+Remove saved contacts function one by one
 =======================================================
 */
 
@@ -155,3 +157,47 @@ function removeAllSaved() {
 Form validation w error message 
 =======================================================
 */
+
+addButton.addEventListener("click", errorOutput);
+
+function errorOutput() {
+  const nameValue = fullName.value;
+  const phoneValue = phone.value;
+  const outputText = document.createElement("p");
+  let errorText = "";
+
+  outputText.classList.add("errorText");
+  errorDisplay.appendChild(outputText);
+
+  if (nameValue === "" && phoneValue === "") {
+    errorText += "Fyll i båda fälten!";
+    outputText.textContent = errorText;
+  } else if (nameValue === "") {
+    errorText += "Fyll i namn!";
+    outputText.textContent = errorText;
+  } else if (phoneValue === "") {
+    errorText += "Fyll i nummer!";
+    outputText.textContent = errorText;
+  } else {
+    addContactNow();
+    removeError();
+    return;
+  }
+  //timer
+  setTimeout(() => {
+    removeError();
+  }, 1500);
+}
+// Removes error-messages at certain events
+addButton.addEventListener("mouseover", removeError);
+fullName.addEventListener("mouseover", removeError);
+phone.addEventListener("mouseover", removeError);
+
+function removeError() {
+  let deleteError = document.getElementsByClassName("errorText");
+  //loop to remove error text
+  while (deleteError.length > 0) {
+    let del = deleteError[0];
+    del.parentNode.removeChild(del);
+  }
+}
