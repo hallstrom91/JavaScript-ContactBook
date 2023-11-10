@@ -1,2 +1,2 @@
 # JavaScript-ContactBook
-#School project for Basic JavaScript course.
+- School project for Basic JavaScript course.
