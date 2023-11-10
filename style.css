@@ -134,6 +134,10 @@ Error Message
   color: rgb(5, 136, 13);
   padding-left: 10px;
 }
+#noEmpty {
+  color: red;
+  padding-left: 10px;
+}
 
 /*
 =======================================================

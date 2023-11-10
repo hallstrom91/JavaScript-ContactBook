@@ -17,7 +17,7 @@ let editMode = false;
 
 /*
 =======================================================
-Creation of dynamic save and change button
+Creation of dynamic save and change button and editing
 =======================================================
 */
 
@@ -39,6 +39,17 @@ function createEditBtn(savedName, savedPhone) {
   });
   // Listen for click on Save button
   saveButton.addEventListener("click", function () {
+    let noEmptyName = savedName.value.trim();
+    let noEmptyPhone = savedPhone.value.trim();
+    let noEmptyValue = document.getElementById("noEmpty");
+    if (noEmptyName === "" || noEmptyPhone === "") {
+      noEmptyValue.innerHTML = "Inga tomma fält!";
+
+      setTimeout(() => {
+        noEmptyValue.innerHTML = "";
+      }, 3000);
+      return;
+    }
     savedName.value = savedName.value;
     savedPhone.value = savedPhone.value;
     changeValue(changeButton, savedName, savedPhone);
@@ -175,7 +186,7 @@ function errorOutput() {
     validationError.innerHTML = "Nummer är obligatoriskt!";
   } else {
     addContactNow();
-    validationSubmit.innerHTML = "Kontakten sparad!";
+    validationSubmit.innerHTML = "Kontakten är sparad!";
   }
   setTimeout(() => {
     validationError.innerHTML = "";
