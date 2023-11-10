@@ -12,7 +12,6 @@ const clrAllButton = document.getElementById("clrAllBtn");
 const fullName = document.getElementById("fullName");
 const phone = document.getElementById("phone");
 const saved = document.getElementById("saved");
-const errorDisplay = document.getElementById("errorDisplay");
 
 let editMode = false;
 
@@ -40,8 +39,8 @@ function createEditBtn(savedName, savedPhone) {
   });
   // Listen for click on Save button
   saveButton.addEventListener("click", function () {
-    savedName.value = fullName.value;
-    savedPhone.value = phone.value;
+    savedName.value = savedName.value;
+    savedPhone.value = savedPhone.value;
     changeValue(changeButton, savedName, savedPhone);
     saveButton.style.display = "none";
     changeButton.style.display = "inline-block";
@@ -69,8 +68,6 @@ Add contacts to the page Function
 =======================================================
 */
 
-/* addButton.addEventListener("click", addContactNow); */
-
 function addContactNow() {
   // Fetch and assign new name and number
   const name = fullName.value;
@@ -94,7 +91,12 @@ function addContactNow() {
   savedContacts.appendChild(savedPhone);
   saved.appendChild(savedContacts);
   // Call edit function N buttons
-  let [changeButton, saveButton] = createEditBtn(savedName, savedPhone);
+  let [changeButton, saveButton] = createEditBtn(
+    savedName,
+    savedPhone,
+    fullName,
+    phone
+  );
   let removeButton = createRemoveBtn(savedName, savedPhone, savedContacts);
   savedContacts.appendChild(changeButton);
   savedContacts.appendChild(saveButton);
@@ -115,7 +117,6 @@ clrButton.addEventListener("click", clearContactFields);
 function clearContactFields() {
   fullName.value = "";
   phone.value = "";
-  removeError();
 }
 
 /*
@@ -163,41 +164,21 @@ addButton.addEventListener("click", errorOutput);
 function errorOutput() {
   const nameValue = fullName.value;
   const phoneValue = phone.value;
-  const outputText = document.createElement("p");
-  let errorText = "";
-
-  outputText.classList.add("errorText");
-  errorDisplay.appendChild(outputText);
+  let validationError = document.getElementById("errorDisplay");
+  let validationSubmit = document.getElementById("submitDisplay");
 
   if (nameValue === "" && phoneValue === "") {
-    errorText += "Fyll i båda fälten!";
-    outputText.textContent = errorText;
+    validationError.innerHTML = "Fyll i båda fälten";
   } else if (nameValue === "") {
-    errorText += "Fyll i namn!";
-    outputText.textContent = errorText;
+    validationError.innerHTML = "Namn är obligatoriskt!";
   } else if (phoneValue === "") {
-    errorText += "Fyll i nummer!";
-    outputText.textContent = errorText;
+    validationError.innerHTML = "Nummer är obligatoriskt!";
   } else {
     addContactNow();
-    removeError();
-    return;
+    validationSubmit.innerHTML = "Kontakten sparad!";
   }
-  //timer
   setTimeout(() => {
-    removeError();
-  }, 1500);
-}
-// Removes error-messages at certain events
-addButton.addEventListener("mouseover", removeError);
-fullName.addEventListener("mouseover", removeError);
-phone.addEventListener("mouseover", removeError);
-
-function removeError() {
-  let deleteError = document.getElementsByClassName("errorText");
-  //loop to remove error text
-  while (deleteError.length > 0) {
-    let del = deleteError[0];
-    del.parentNode.removeChild(del);
-  }
+    validationError.innerHTML = "";
+    validationSubmit.innerHTML = "";
+  }, 3000);
 }
